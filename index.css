@@ -1,0 +1,227 @@
+/*css reset (使用meyerweb) */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/*reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*SMACSS命名規則*/
+@media screen  and (max-width:1920px) {   /* 若同時寫min-width:1201px，則更小裝置無法沿用css樣式*/
+/*base*/
+  html { 
+    font-family:Helvetica,sans-serif;
+  }
+  img{
+    max-width: 100%;
+  }
+  body{
+    font-size: 20px;
+  }
+/*layout*/
+  .l-navbar{
+    display: flex;
+    position: relative;
+    justify-content:space-between ;
+    padding: 10px;
+    color: #000093;
+  }
+  .l-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    background-color:#DDDDFF;
+    color: 	#0000C6;
+    font-size:40px;
+    text-align: center;
+  }
+  .l-main{
+    display: flex;
+    width: 1200px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px auto;
+    padding-left: 20px; /*解決 small+big box都設margin-right時，最右邊有間距 最左卻無*/
+                        /*@@待思考:small+big box的grid gap都設20px，彼此寬度對不齊。
+                                   沒設間距時、改每一box都margin-right時卻可以 */
+  }
+/*module*/
+  /*nav*/ 
+  .m-menu{
+    display: flex;
+    justify-content:flex-start;  
+    margin-left: 10px;
+  }
+  .m-menu-link{
+    margin-right: 15px;
+    text-decoration: none;
+  }
+  #menu-hamburger , #menu-close{
+    display:none;
+   }   
+/*main*/
+  /*section:small boxes */ 
+  .m-grid-smallboxes{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-template-rows: 50px;
+    margin-bottom: 20px;
+  }
+  .m-wrapper-smallbox{
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;  /*平分總寬度: flex-grow, flex-shrink , flex-basis 設為 1 1 0*/
+    background-color:#DDDDFF ;
+    margin-right: 20px;
+  }
+  .m-text-smallbox{
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding:5px;
+  }
+  /*section:big boxes*/ 
+  .m-grid-bigboxes{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    margin-bottom: 20px;
+  }
+  .m-wrapper-bigbox{   
+    position: relative;
+    flex: 1 0 20%;  /*一行五個  寬度各分1/5*/
+    height: 200px;  /*@@單獨box寫死高度 才能完整呈現圖片?!*/
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background:url(https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?q=80&w=1826&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)no-repeat center / cover;
+  }
+  .m-image-bigbox{
+    position: absolute;
+    top:0;
+    right:0;
+  }
+  .m-text-bigbox{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    opacity: 0.55;
+  }  
+}
+@media screen  and (max-width:1200px) {   
+  /*layout*/
+  .l-main{
+    width: 90%;
+  }
+  /*module*/
+  /*main*/
+    /*section:small boxes*/ 
+    .m-grid-smallboxes{
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(50%,1fr));
+      row-gap: 20px;
+    }
+    .m-wrapper-smallbox:nth-child(3) {
+      grid-column-end: span 2;  /*指定元素跨越2網格列 +又前一行僅2網格列 =佔整行寬度*/ 
+    }
+    .m-image-smallbox-small{
+      width: 80px;
+      height: 50px;
+    }
+    /*section:big boxes*/
+    .m-grid-bigboxes{
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(25%,1fr));
+      row-gap: 20px;
+    }
+    .m-wrapper-bigbox:nth-child(9), .m-wrapper-bigbox:nth-child(10) {
+      grid-column-end: span 2; 
+    }
+  }
+@media screen and (min-width:360px)and (max-width:600px) {  
+/*layout*/
+ .l-header p {  /*@@暫彌補瀏覽器360px時，文字寬度幾乎貼齊視窗左右側*/ 
+  font-size: 8vw;
+ }
+  /*module*/
+  /*nav*/ 
+  /*menu圖示:漢堡-打叉*/ 
+  #menu-hamburger{
+    display: flex;
+    position: absolute;  /*點了，會固定最右邊*/ 
+    right:0;   
+    z-index: 102;  /*權重>彈跳列表 */      
+  }
+  #menu-close{
+    position: absolute;  
+    right: 0;  
+    z-index: 102;  /*權重>彈跳列表 */   
+  }
+  #popup-menu-mobile{
+    flex-direction: column;
+    position: fixed;
+    top : 0;
+    right: 0;
+    z-index: 101;
+    align-items: center;
+    width: 50%;
+    height:100% ;     /* 依瀏覽器(fixed).非父元素(absolute)去定位，再設寬+高%*/
+    padding-top: 20px;
+    box-shadow: 0px 0px 15px gray;
+    background-color: white;  
+  }
+  .m-menu-link{
+    line-height: 3;
+  }
+  /* section:  boxes */
+  .m-grid-smallboxes , .m-grid-bigboxes {
+    grid-template-columns: repeat(auto-fill,minmax(100%,1fr));
+    justify-content:space-around;
+  }
+    /*指定items : 改回多出寬度，才能一橫列一個+正確顯示高度、背景圖*/
+  .m-wrapper-smallbox:nth-child(3) , .m-wrapper-bigbox:nth-child(9), .m-wrapper-bigbox:nth-child(10) {
+    grid-column-end: span 1; 
+  }
+}
+
