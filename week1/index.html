@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>謝淑雅-week1任務</title>
+    <link rel="stylesheet" type="text/css" href="index.css">  
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+  </head>
+  <body>  
+    <!--導欄區-->
+    <nav class="l-navbar"> 
+      <h1 class="m-title">
+        My&nbsp;Website
+      </h1>
+        <i class="fa-solid fa-bars" id="menu-hamburger"></i>
+        <i class="fa-solid fa-times" id="menu-close"></i>
+        <ul class="m-menu" id="popup-menu-mobile">
+          <li><a href="#" class="m-menu-link">Item&nbsp;1</a></li>
+          <li><a href="#" class="m-menu-link">Item&nbsp;2</a></li>
+          <li><a href="#" class="m-menu-link">Item&nbsp;3</a></li>
+          <li><a href="#" class="m-menu-link">Item&nbsp;4</a></li>
+        </ul>
+    </nav>
+    <!--頁首區-->
+    <header class="l-header">
+      <p>
+        Welcome&nbsp;to&nbsp;MyHome
+      </p>
+    </header>
+    <!--文中區-->
+    <main  class=l-main>
+      <!--區塊一:小盒子-->
+      <section  class="m-grid-smallboxes">
+        <div class="m-wrapper-smallbox">
+          <img class="m-image-smallbox-small"  src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?q=80&w=1826&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="starry sky"  width="80px" >
+          <p  class="m-text-smallbox">Promotion&nbsp;1</p> 
+        </div>
+        <div class="m-wrapper-smallbox ">
+          <img class="m-image-smallbox-small"  src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?q=80&w=1826&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="starry sky" width="80px">
+          <p  class="m-text-smallbox">Promotion&nbsp;2</p> 
+        </div>
+        <div class="m-wrapper-smallbox">
+          <img class="m-image-smallbox-small"  src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?q=80&w=1826&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="starry sky" width="80px">
+          <p  class="m-text-smallbox">Promotion&nbsp;3</p> 
+        </div>
+      </section>
+      <!--區塊二:大盒子-->
+      <section class="m-grid-bigboxes">
+        <div class="m-wrapper-bigbox">
+          <i class="m-image-bigbox  fa-solid fa-star" style="color: silver;"></i>
+          <p  class="m-text-bigbox">Title&nbsp;1</p> 
+        </div>
+        <div class="m-wrapper-bigbox">
+          <i class="m-image-bigbox  fa-solid fa-star" style="color:silver;"></i>
+          <p  class="m-text-bigbox">Title&nbsp;2</p> 
+        </div>
+        <div class="m-wrapper-bigbox">
+          <i  class="m-image-bigbox  fa-solid fa-star" style="color:silver;"></i>
+          <p  class="m-text-bigbox">Title&nbsp;3</p> 
+        </div>
+        <div class="m-wrapper-bigbox">
+          <i  class="m-image-bigbox  fa-solid fa-star" style="color:silver;"></i>
+          <p  class="m-text-bigbox">Title&nbsp;4</p> 
+        </div>
+        <div class="m-wrapper-bigbox">
+          <i  class="m-image-bigbox  fa-solid fa-star" style="color:silver;"></i>
+          <p  class="m-text-bigbox">Title&nbsp;5</p> 
+        </div>
+        <div class="m-wrapper-bigbox">
+          <i class="m-image-bigbox  fa-solid fa-star" style="color: silver;"></i>
+          <p  class="m-text-bigbox">Title&nbsp;6</p> 
+        </div>
+        <div class="m-wrapper-bigbox">
+          <i class="m-image-bigbox  fa-solid fa-star" style="color:silver;"></i>
+          <p  class="m-text-bigbox">Title&nbsp;7</p> 
+        </div>
+        <div class="m-wrapper-bigbox">
+          <i  class="m-image-bigbox  fa-solid fa-star" style="color:silver;"></i>
+          <p  class="m-text-bigbox">Title&nbsp;8</p> 
+        </div>
+        <div class="m-wrapper-bigbox">
+          <i  class="m-image-bigbox  fa-solid fa-star" style="color:silver;"></i>
+          <p  class="m-text-bigbox">Title&nbsp;9</p> 
+        </div>
+        <div class="m-wrapper-bigbox">
+          <i  class="m-image-bigbox  fa-solid fa-star" style="color:silver;"></i>
+          <p  class="m-text-bigbox">Title&nbsp;10</p> 
+      </section>
+    </main>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      let menuHamburger = document.getElementById("menu-hamburger");
+      let menuClose = document.getElementById("menu-close");
+      let popupMenu = document.getElementById("popup-menu-mobile");
+      /*勿多寫預設 漢堡顯示+打叉、彈跳表單隱藏 ，否則蓋過桌電+平板css狀態設定*/
+      menuHamburger.onclick = function(event) {
+        menuHamburger.style.display = 'none'; 
+        menuClose.style.display = 'flex';
+        popupMenu.style.display = "flex";
+      } 
+      menuClose.onclick = function(event) {
+        menuClose.style.display = 'none';
+        menuHamburger.style.display = 'flex'; 
+        popupMenu.style.display = "none";
+      }
+    });
+    </script>
+  </body>  
+
+
+ 
