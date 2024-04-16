@@ -1,0 +1,245 @@
+/*css reset (用meyerweb) */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/*reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*SMACSS命名規則*/
+@media screen  and (max-width:1920px) {  
+/*base*/
+  html { 
+    font-family:Helvetica,sans-serif;
+  }
+  img{
+    max-width: 100%;
+  }
+  body{
+    font-size: 20px;
+  }
+/*layout*/
+  .l-navbar{
+    display: flex;
+    position: relative;
+    justify-content:space-between ;
+    padding: 10px;
+    color: #0978c3;
+  }
+  .l-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    background-color:#d4e5f8;
+    color: 	#0886c5;
+    font-size:40px;
+    text-align: center;
+  }
+  .l-main{
+    display: flex;
+    width: 1200px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px auto;
+    padding-left: 20px; 
+  }
+/*module*/
+  /*nav*/ 
+  .m-menu{
+    display: flex;
+    justify-content:flex-start;  
+    margin-left: 10px;
+  }
+  .m-menu-link{
+    margin-right: 15px;
+    color: #0978c3;
+    text-decoration: none;
+  }
+  #menu-hamburger , #menu-close{
+    display:none;
+   }   
+/*main*/
+  /*section:small boxes */ 
+  .m-grid-smallboxes{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-template-rows: 50px;
+    margin-bottom: 20px;
+  }
+  .m-wrapper-smallbox{
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;  
+    background-color:#d4e5f8 ;
+    margin-right: 20px;
+  }
+  .m-text-smallbox{
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding:5px;
+  }
+  /*section:big boxes*/ 
+  .m-grid-bigboxes{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    margin-bottom: 20px;
+  }
+  .m-wrapper-bigbox{   
+    position: relative;
+    flex: 1 0 20%;  
+    height: 200px;  
+    margin-right: 20px;
+    margin-bottom: 20px;
+    overflow: hidden; 
+    background:no-repeat  center/cover ;
+  }
+  .m-image-bigbox{
+    position: absolute;
+    top:0;
+    right:0;
+  }
+  .m-text-bigbox{
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;  /*確保字不>容器* 、在非彈性容器有效*/
+    background-color: white;
+    opacity: 0.6;
+    z-index: 102; 
+    white-space: nowrap;     /* 字只顯示1行+禁換行 */
+    overflow: hidden;        /* 隱藏>元素框內容 */
+    text-overflow: ellipsis; /* 字>元素框內容，顯示省略號... 
+                               @@搭配多限制 1.只能直接加在有字的元素
+                                           2-1.該元素同時設white-space+overflow+text-overflow
+                                           2-2.該元素有明確寬度(%僅搭配block或inline-block,勿搭flex或grid。記得刪flex專屬CSS)*
+                                           3.最近父元素 可能也設overflow*/ 
+  }   
+  .m-button{
+    margin:0 auto;
+    border: 2px solid 	#0886c5 ;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: #0886c5;
+    background-color:#d4e5f8 ;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+@media screen  and (max-width:1200px) {   
+  /*layout*/
+  .l-main{
+    width: 90%;
+  }
+  /*module*/
+  /*main*/
+    /*section:small boxes*/ 
+    .m-grid-smallboxes{
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(50%,1fr));
+      row-gap: 20px;
+    }
+    .m-wrapper-smallbox:nth-child(3) {
+      grid-column-end: span 2; 
+    }
+    .m-image-smallbox-small{
+      width: 80px;
+      height: 50px;
+    }
+    /*section:big boxes*/
+    .m-grid-bigboxes{
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(25%,1fr));
+      row-gap: 20px;
+    }
+    .m-flatColumn-bigbox{
+      grid-column-end: span 2; 
+    }
+  }
+@media screen and (min-width:360px)and (max-width:600px) {  
+/*layout*/
+ .l-header p {   
+  font-size: 8vw;
+ }
+  /*module*/
+  /*nav*/ 
+  /*menu圖示:漢堡-打叉*/ 
+  #menu-hamburger{
+    display: flex;
+    position: absolute; 
+    right:0;   
+    z-index: 102;      
+  }
+  #menu-close{
+    display: none;
+    position: absolute;  
+    right: 0;  
+    z-index: 102;    
+  }
+  #popup-menu-mobile{
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top : 0;
+    right: 0;
+    z-index: 101;
+    align-items: center;
+    width: 50%;
+    height:100% ;    
+    padding-top: 20px;
+    box-shadow: 0px 0px 15px gray;
+    background-color: white;  
+  }
+  .m-menu-link{
+    line-height: 3;
+  }
+  .m-grid-smallboxes , .m-grid-bigboxes{
+    grid-template-columns: repeat(auto-fill,minmax(100%,1fr));
+    justify-content:space-around;
+  }
+  /*必把平板裝置css改回grid-column-end: span 1，否則和手機裝置的grid設定 同時出現 會跑版*/
+  .m-wrapper-smallbox:nth-child(3) , .m-wrapper-bigbox:nth-child(9), .m-wrapper-bigbox:nth-child(10),.m-mobileColumn-bigbox {
+    grid-column-end: span 1; 
+  }
+}
