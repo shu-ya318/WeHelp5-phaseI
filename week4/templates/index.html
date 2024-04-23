@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>首頁</title>
+        <link rel="stylesheet" href="/static/index.css">       
+    </head>
+    <body>  
+            <h1 class="m-title">歡迎光臨，請輸入帳號密碼</h1>       
+            <form id="signinForm" class="m-form">
+                <p class="m-subtitle">登入系統</p>
+                <div>
+                    <label for="username">帳號</label>
+                    <input type="text" id="username" name="username">
+                </div>
+                <br>
+                <div>
+                <label for="password">密碼</label>
+                <input type="password" id="password" name="password">
+                </div>
+                <br>
+                <div>
+                    <label for="checkbox">同意條款</label>
+                    <input type="checkbox" id="checkbox" name="checkbox">
+                </div>
+                <br>
+                <input class="m-button" type="submit" value="登入">
+            </form>
+    <script src="/static/signin_form.js"></script>
+    </body>
+</html>
