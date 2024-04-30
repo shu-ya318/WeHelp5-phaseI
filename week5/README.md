@@ -122,14 +122,14 @@ SELECT SUM(follower_count) FROM member;
 ## request3: 
 ### SELECT the average of follower_count of all the rows from the member table.
 ```
-SELECT SUM(follower_count) FROM member;
+SELECT AVG(follower_count) FROM member;
 ```
 ![計算follower_count欄位的平均值](https://github.com/shu-ya318/WeHelp5-phaseI/blob/main/week5/screenshot/4-03.png?raw=true)
 
 ## request4: 
 ### SELECT the average of follower_count of the first 2 rows, in descending order of follower_count, from the member table.
 ```
-SELECT AVG(follower_count) AS avg_follower_count 
+SELECT AVG(follower_count)
 FROM (
     SELECT * 
     FROM member 
