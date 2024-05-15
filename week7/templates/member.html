@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>成功頁面</title>
+    <style>
+        body{
+            margin:0px;
+          }
+        .m-title{
+            margin: 0px;
+            padding: 30px 40px;
+            color: white;
+            background-color: black;
+            font-size: x-large;
+            font-weight: bolder;
+            text-align: center;         
+        }
+        .m-message{
+            margin-top:40px;
+            text-align: center;
+            font-size: large;
+        }
+        .m-form{
+            display: flex; 
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding:5px;
+        }
+        .m-hr{
+            width: 100%;  
+            margin-top: 30px; 
+            border: 1px solid rgba(195, 194, 194, 0.973);
+        }
+        .m-subtitle{
+            margin-top:25px;
+            font-size: large;
+            font-weight: bolder;
+            text-align: center;  
+        }
+        .m-button{
+            padding: 5px  ;
+        }
+        .m-message-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top:5px;
+            padding: 5px;
+        }
+        .m-text{
+            text-align: center;  
+        }
+        #query_username, #new_name{
+            padding: 5px;
+        }
+        .m-finalinput{
+            margin-bottom:50px;
+        }
+    </style> 
+</head>
+<body>
+    <h1 class="m-title">歡迎光臨，這是會員頁</h1>
+    <div class="m-message">
+        <p id="welcome_message">{{name }}，歡迎登入系統</p>
+        <a href="/signout">登出系統</a>
+    </div>
+    <hr class="m-hr">
+    <p class="m-subtitle">快來留言吧</p>
+    <form  class="m-form" action="/createMessage" method="post">
+        <div>
+            <label for="content">內容</label>
+            <input type="text" id="content" name="content" required>
+        </div>
+        <br>
+        <input class="m-button" type="submit" value="送出">
+    </form>
+    <hr class="m-hr"><div class="m-text">
+        {% for message in messages %}
+        <div class="m-message-item">
+            <p>
+                <strong id="message_name_{{ message[0] }}" {% if message[3] == request.session.id %}class="current_member"{% endif %}>{{ message[2] }}</strong>
+                : {{ message[1] }}
+            </p>
+            {% if message[3] == request.session.id %}
+            <form  action="/deleteMessage"  method="post" onsubmit="return confirm('確定刪除這個留言嗎？');">
+                <input type="hidden" name="message_id" value="{{ message[0] }}">
+                <input type="submit" value="X">
+            </form>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <p class="m-subtitle">查詢會員姓名</p>
+    <form id="query_form" class="m-form">
+        <div>
+            <input type="text" id="query_username" required>
+            <button type="button" class="m-button" id="query_button">查詢</button>
+        </div>
+    </form>
+    <div id="query_result"></div>
+    <p class="m-subtitle">更新我的姓名</p>
+    <div class="m-finalinput">
+        <form id="update_name_form" class="m-form">
+            <div>
+                <input type="text" id="new_name" required>
+                <button type="button" class="m-button" id="update_name_button">更新</button>
+            </div>
+        </form>
+        <div id="update_name_result"></div>
+    </div>
+    <script src="/static/member.js"></script>
+</body>
+</html>

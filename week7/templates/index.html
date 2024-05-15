@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>首頁</title>
+        <link rel="stylesheet" href="/static/index.css">       
+    </head>
+    <body>  
+            <h1 class="m-title">歡迎光臨，請註冊登入系統</h1>       
+            <form id="signupForm" class="m-form" action="/signup" method="post">
+                <p class="m-subtitle">註冊帳號</p>
+                <div>
+                    <label for="signup_name">姓名</label>
+                    <input type="text" id="signup_name" name="name" required >
+                </div>
+                <br>
+                <div>
+                    <label for="signup_username">帳號</label>
+                    <input type="text" id="signup_username" name="username" required >
+                </div>
+                <br>
+                <div>
+                    <label for="signup_password">密碼</label>
+                    <input type="password" id="signup_password" name="password" required >
+                </div>
+                <br>
+                <input class="m-button" type="submit" value="註冊">
+            </form>
+            <hr class="m-hr">
+            <form id="signinForm" class="m-form" action="/signin" method="post">  
+                <p class="m-subtitle">登入系統</p>
+                <div>
+                    <label for="username">帳號</label>
+                    <input type="text" id="username" name="username" required >
+                </div>
+                <br>
+                <div>
+                <label for="password">密碼</label>
+                <input type="password" id="password" name="password" required >
+                </div>
+                <br>
+                <input class="m-button" type="submit" value="登入">
+            </form>
+    </body>
+</html>
